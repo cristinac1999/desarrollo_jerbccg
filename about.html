@@ -4,82 +4,167 @@
     <meta charset="UTF-8">
     <title>Sobre nosotros - JERBCCG</title>
     <style>
-        /* Mantenemos tu CSS original base */
+        /* RESET Y BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; background-color: #f4f6f7; }
-        header { position: fixed; top: 0; width: 100%; background-color: #2C3E50; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; z-index: 1000; }
-        .logo-container h1 { font-size: 20px; }
-        nav { display: flex; gap: 20px; }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        nav a:hover { color: #1ABC9C; }
-        main { margin-top: 90px; padding: 40px; flex: 1; max-width: 800px; margin-left: auto; margin-right: auto; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h2 { margin-bottom: 20px; color: #2C3E50; text-align: center; }
-        p { color: #555; line-height: 1.6; margin-bottom: 20px; text-align: center; }
-        footer { text-align: center; padding: 15px; background-color: #ddd; font-size: 14px; margin-top: auto; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            background-color: #f0f2f5; 
+            color: #333;
+        }
 
-        /* NUEVO CSS para las tarjetas de integrante */
+        /* HEADER REDISEÑADO (Se elimina el fixed para que el texto largo no estorbe) */
+        header { 
+            background-color: #2C3E50; 
+            color: white; 
+            padding: 40px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-container h1 { 
+            font-size: 28px; 
+            color: #1ABC9C; 
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .logo-container h2 { 
+            font-size: 18px; 
+            font-weight: 400; 
+            color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+
+        .logo-container p { 
+            font-size: 14px; 
+            max-width: 800px; 
+            line-height: 1.5; 
+            color: #ecf0f1; 
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        /* NAVEGACIÓN */
+        nav { 
+            display: flex; 
+            gap: 25px; 
+            border-top: 1px solid #3e5871; 
+            padding-top: 20px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: #1ABC9C; }
+
+        /* CONTENIDO PRINCIPAL */
+        main { 
+            padding: 40px 20px; 
+            flex: 1; 
+            max-width: 900px; 
+            width: 95%;
+            margin: 30px auto; 
+            background-color: white; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+        }
+
+        h2 { margin-bottom: 15px; color: #2C3E50; text-align: center; font-size: 26px; }
+        
+        /* Texto introductorio en Main */
+        main > p { 
+            color: #666; 
+            line-height: 1.8; 
+            margin-bottom: 40px; 
+            text-align: center; 
+            font-size: 17px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* GRID DE EQUIPO */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 30px;
         }
 
         .member-card {
             background: #fff;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #eef0f2;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            padding: 30px;
             text-align: center;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
         }
 
         .member-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             border-color: #1ABC9C;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .member-photo-placeholder {
-            width: 120px;
-            height: 120px;
-            background-color: #eee;
-            border-radius: 50%; /* Foto redonda para perfil */
-            margin: 0 auto 15px auto;
+            width: 130px;
+            height: 130px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px dashed #ccc;
-            overflow: hidden; /* Para que la imagen real no se salga del círculo */
+            border: 3px solid #1ABC9C;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.2);
         }
 
-        .member-photo-placeholder p {
-            font-size: 11px;
-            color: #777;
-            padding: 10px;
-            margin: 0;
-            text-align: center;
-        }
-
-        /* Si añades una imagen real más adelante, usa esta clase en la etiqueta <img> */
         .member-photo-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen al círculo sin deformarla */
+            object-fit: cover;
         }
 
         .member-card h3 {
             color: #2C3E50;
-            margin-bottom: 5px;
-            font-size: 18px;
+            margin-bottom: 8px;
+            font-size: 20px;
         }
 
         .member-card span {
             color: #1ABC9C;
+            background: rgba(26, 188, 156, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 14px;
-            display: block;
-            margin-bottom: 10px;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        /* FOOTER */
+        footer { 
+            text-align: center; 
+            padding: 25px; 
+            background-color: #2C3E50; 
+            color: #bdc3c7; 
+            font-size: 14px; 
+            margin-top: 40px; 
         }
     </style>
 </head>
@@ -106,7 +191,7 @@
         <div class="member-card">
             <div class="member-photo-placeholder">
                 <img src="fotoje.jpg">
-                </div>
+            </div>
             <h3>José Enrique</h3>
             <span>Colaborador 1</span>
         </div>
@@ -114,7 +199,7 @@
         <div class="member-card">
             <div class="member-photo-placeholder">
                 <img src="fotoc.jpg">
-                </div>
+            </div>
             <h3>Cristina</h3>
             <span>Colaborador 2</span>
         </div>
